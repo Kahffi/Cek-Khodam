@@ -1,7 +1,7 @@
 import { useState } from "react";
 import KHODAMS from "../utils/Khodam";
 
-export const LOADING_DURATION = 100;
+export const LOADING_DURATION = 5000;
 
 export default function useGetKhodam() {
 	const [data, setData] = useState(null);
