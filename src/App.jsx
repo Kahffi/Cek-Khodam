@@ -13,6 +13,7 @@ const rarityMap = [
 	{ rarity: "B", style: "text-lime-600" },
 	{ rarity: "A", style: "text-violet-600" },
 	{ rarity: "S", style: "text-purple-600" },
+	{ rarity: "", style: "" },
 ];
 
 function App() {
@@ -75,17 +76,23 @@ function App() {
 						{data || isPending ? (
 							<div className="flex flex-col items-center gap-3">
 								<CrystalBall />
-								{data && <h2 className="text-5xl">{data.name}</h2>}
+								{data && !isPending && (
+									<h2 className="text-5xl">{data.name}</h2>
+								)}
 							</div>
 						) : null}
 
-						{data && (
-							<article className="flex flex-col items-center gap-6 w-1/2 max-w-7xl text-xl bg-slate-500/50 p-5 rounded-md">
+						{data && !isPending && (
+							<article className="flex flex-col items-center gap-6 w-1/2 max-w-7xl text-2xl bg-slate-500/70 p-5 rounded-md">
 								{data && <p>{data.description}</p>}
 								{data && (
 									<div className="flex flex-col items-center gap-3">
 										<p className="text-xl">Rating Khodam:</p>
-										<h2 className={`text-8xl ${rarityMap[data.rarity].style}`}>
+										<h2
+											className={`text-8xl not-italic ${
+												rarityMap[data.rarity].style
+											}`}
+										>
 											{rarityMap[data.rarity].rarity}
 										</h2>
 									</div>
